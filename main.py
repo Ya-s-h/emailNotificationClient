@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 import requests
 
@@ -14,7 +15,7 @@ def notification_client():
 
     # When a real notification is received
     # send a message to Discord using a Discord webhook URL
-    discord_webhook_url = 'your-discord-webhook-url-here'
+    discord_webhook_url = os.getenv('DISCORD_WEBHOOK_URL')  # Get the URL from environment variable
 
     message = {
         'content': 'A change happened in the monitored resource!',
